@@ -7,20 +7,21 @@ struct Node {
     Node *pre;
 };
 
-struct dList{
+struct dList {
     Node *head;
 };
 
-dList *createNode(int x){
+dList *createNode (int x){
     dList *l = new dList;
     l->head = new Node;
     l->head->data=x;
     l->head->pre=NULL;
     l->head->next=NULL;
     return l;
+    
 }
 
-dList *addHead(dList *l, int x){
+dList *addHead (dList *l, int x){
     Node *temp = new Node;
     temp->data=x;
     temp->pre=NULL;
@@ -28,18 +29,17 @@ dList *addHead(dList *l, int x){
     l->head->pre=temp;
     l->head=temp;
     return l;
-
 }
 
 dList *addLast(dList *l, int x){
     Node *temp = new Node;
-    temp->data=x;
+    temp->data = x;
     temp->next = NULL;
 
     Node *p = l->head;
-    while (p->next !=NULL){
-        p=p->next;
 
+    while(p->next != NULL){
+        p=p->next;
     }
     p->next=temp;
     temp->pre=p;
@@ -47,24 +47,24 @@ dList *addLast(dList *l, int x){
     return l;
 }
 
-void printList(dList *l){
+void printList (dList *l){
     Node *p = l->head;
+
     while (p!=NULL){
         cout<<p->data<<" ";
-        p=p->next;
+        p=p->next; 
     }
+
 }
+
 int main ()
 {
-    int n,x;
+    int n;
     cin>>n;
     dList *l = createNode(1);
     for(int i=2;i<=n;i++){
-        l = addHead(l,i);
-        l = addLast(l,i);
+        l=addHead(l,i);
+        l=addLast(l,i);
     }
     printList(l);
 }
-
-
-
